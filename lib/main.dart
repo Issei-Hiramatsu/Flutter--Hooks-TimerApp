@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,11 +29,16 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late Timer _timer;
   int _number = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _number++;
+  @override
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _number = timer.tick;
+      });
     });
   }
 
@@ -45,5 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Text(_number.toString()),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 }
