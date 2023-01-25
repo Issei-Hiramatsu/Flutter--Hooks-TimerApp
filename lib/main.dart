@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -27,11 +29,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late Timer _timer;
   int _number = 0;
 
-  void _incrementCounter() {
-    setState(() {
-      _number++;
+  void initState() {
+    super.initState();
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      _number = timer.tick;
     });
   }
 
@@ -43,7 +47,13 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Text(_number.toString()),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 }
