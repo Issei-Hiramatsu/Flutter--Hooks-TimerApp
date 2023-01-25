@@ -43,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Text(_number.toString()),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
