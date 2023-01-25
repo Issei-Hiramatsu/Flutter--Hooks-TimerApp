@@ -32,10 +32,13 @@ class _MyHomePageState extends State<MyHomePage> {
   late Timer _timer;
   int _number = 0;
 
+  @override
   void initState() {
     super.initState();
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      _number = timer.tick;
+    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      setState(() {
+        _number = timer.tick;
+      });
     });
   }
 
