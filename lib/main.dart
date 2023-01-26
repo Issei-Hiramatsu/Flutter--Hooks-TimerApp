@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hooks_timer_app/timer/reusable_hooks/reusable_hooks_timer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,36 +15,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _number = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _number++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('title'),
-      ),
-      body: Center(
-        child: Text(_number.toString()),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      home: HomePageCustomHook(),
     );
   }
 }
